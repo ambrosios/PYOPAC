@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Side B</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kanban.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/timeline.css') }}">
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <main class="main-content">
+        <div id="header-container"></div>
+        
+        <section class="page-header">
+            <div class="header-actions">
+                
+                <div class="timeline-controls">
+                    <!-- Filtre période -->
+                    <div class="control-group">
+                        <label for="period-filter">Période :</label>
+                        <select id="period-filter" class="form-select">
+                            <option value="week">Cette semaine</option>
+                            <option value="month" selected>Ce mois</option>
+                            <option value="quarter">Ce trimestre</option>
+                            <option value="all">Tout</option>
+                            <option value="custom">Personnalisé</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Filtre type -->
+                    <div class="control-group">
+                        <label for="date-type">Afficher :</label>
+                        <select id="date-type" class="form-select">
+                            <option value="deadline">Échéances</option>
+                            <option value="creation">Dates de création</option>
+                            <option value="both">Les deux</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Filtre statut -->
+                    <div class="control-group">
+                        <label for="status-filter">Statut :</label>
+                        <select id="status-filter" class="form-select">
+                            <option value="all" selected>Tous</option>
+                            <option value="active">En cours</option>
+                            <option value="done">Terminés</option>
+                            <option value="todo">À faire</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Filtre projet -->
+                    <div class="control-group">
+                        <label for="project-filter">Projet :</label>
+                        <select id="project-filter" class="form-select">
+                            <option value="all" selected>Tous les projets</option>
+                            <!-- Chargé dynamiquement -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Période personnalisée (masqué par défaut) -->
+        <div id="custom-period" class="custom-period" style="display: none;">
+            <div class="control-group">
+                <label for="date-start">Du :</label>
+                <input type="date" id="date-start" class="form-input">
+            </div>
+            <div class="control-group">
+                <label for="date-end">Au :</label>
+                <input type="date" id="date-end" class="form-input">
+            </div>
+            <button id="apply-custom-period" class="btn btn-primary">Appliquer</button>
+        </div>
+
+        <!-- Timeline Stats -->
+        <div class="timeline-stats">
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="stat-total">0</span>
+                    <span class="stat-label">Tâches affichées</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏰</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="stat-upcoming">0</span>
+                    <span class="stat-label">À venir</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="stat-overdue">0</span>
+                    <span class="stat-label">En retard</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="stat-done">0</span>
+                    <span class="stat-label">Terminées</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="timeline-container">
+            <div id="timeline-content">
+                <!-- Généré dynamiquement -->
+            </div>
+        </div>
+
+        <!-- Message si vide -->
+        <div id="empty-message" class="empty-message" style="display: none;">
+            <p>📭 Aucune tâche à afficher pour cette période</p>
+        </div>
+    </main>
+
+    <!-- Modal Ajout/Édition Tâche -->
+    <div id="modal-task" class="modal"></div>
+
+    <script src="{{ url_for('static', filename='js/api-adapter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/timeline.js') }}"></script>
+    
+    <script>
+        initComponents('timeline', '📅 Timeline des tâches');
+    </script>
+</body>
+</html>

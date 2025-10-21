@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[OPAC] Toutes les tâches </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kanban.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <div id="sidebar-container"></div>
+    <main class="main-content">
+        <div id="header-container"></div>
+        <section class="page-header">
+            <button id="btn-add-task" class="btn btn-primary">+ Nouvelle tâche</button>
+          </section>
+        <!-- <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button onclick="window.location.href='dashboard.html'" class="btn-back">
+                        ← Retour aux projets
+                    </button>
+                    <h1 id="project-name">Chargement...</h1>
+                </div>
+                <div class="header-right">
+                    <button id="btn-add-task" class="btn-primary">+ Nouvelle tâche</button>
+                </div>
+            </div>
+        </header> -->
+
+        <!-- Contrôles de tri et filtres -->
+        <div class="task-controls">
+            <div class="control-group">
+                <label for="sort-by">Trier par :</label>
+                <select id="sort-by" class="form-select">
+                    <option value="creation_date">Date de création</option>
+                    <option value="deadline">Échéance</option>
+                    <option value="priority">Priorité</option>
+                    <option value="title">Titre (A-Z)</option>
+                    <option value="last_update_date">Dernière modification</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="sort-order">Ordre :</label>
+                <select id="sort-order" class="form-select">
+                    <option value="asc">Croissant</option>
+                    <option value="desc">Décroissant</option>
+                </select>
+            </div>
+            
+            <!-- Filtre priorité (optionnel) -->
+            <div class="control-group">
+                <label for="filter-priority">Priorité :</label>
+                <select id="filter-priority" class="form-select">
+                    <option value="all">Toutes</option>
+                    <option value="high">🔴 Haute</option>
+                    <option value="medium">🟡 Moyenne</option>
+                    <option value="low">🟢 Basse</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Kanban Board -->
+        <div class="kanban-container">
+            <!-- Colonne À faire -->
+            <div class="kanban-column" data-status="todo">
+                <div class="column-header">
+                    <h2>📋 À faire</h2>
+                    <span class="task-count" id="count-todo">0</span>
+                </div>
+                <div class="column-content" id="column-todo" data-status="todo">
+                    <!-- Tâches ici -->
+                </div>
+            </div>
+
+            <!-- Colonne En cours -->
+            <div class="kanban-column" data-status="in-progress">
+                <div class="column-header">
+                    <h2>🚀 En cours</h2>
+                    <span class="task-count" id="count-in-progress">0</span>
+                </div>
+                <div class="column-content" id="column-in-progress" data-status="in-progress">
+                    <!-- Tâches ici -->
+                </div>
+            </div>
+
+            <!-- Colonne Terminé -->
+            <div class="kanban-column" data-status="done">
+                <div class="column-header">
+                    <h2>✅ Terminé</h2>
+                    <span class="task-count" id="count-done">0</span>
+                </div>
+                <div class="column-content" id="column-done" data-status="done">
+                    <!-- Tâches ici -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Ajout/Édition Tâche -->
+        <div id="modal-task" class="modal"></div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/api-adapter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/project-kanban.js') }}"></script>
+    <script>
+        // Initialiser les composants pour cette page
+        initComponents('tasks', '📚 Toutes les tâches');
+    </script>
+</body>
+</html>

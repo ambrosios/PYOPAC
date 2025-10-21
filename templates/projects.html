@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[OPAC] Tous les projets</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
+</head>
+<body>
+  <!-- Container pour la sidebar -->
+  <div id="sidebar-container"></div>
+
+  <main class="main-content">
+    <div id="header-container"></div>
+    <section class="page-header">
+        <button class="btn btn-primary" onclick="newProjectModal()">
+          ➕ Nouveau projet
+        </button>
+      </section>
+   
+    <div id="projects-list-container"></div>
+  </main>
+
+  <div class="modal" id="modal-project">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modal-label-create">➕ Nouveau projet</h2>
+            <h2 style="display: none;" id="modal-label-edit">✏️  Modifier le projet</h2>
+            <button class="btn-close modal-close-btn">✕</button>
+        </div>
+        <div class="modal-body">
+            <form id="projectForm">
+                <div class="form-group" id="modalProjectIdGroup" style="display: none;">
+                    <label for="modalProjectId">ID du projet</label>
+                    <input 
+                        type="text" 
+                        id="modalProjectId" 
+                        class="form-control"
+                        disabled
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="modalProjectName">Nom du projet *</label>
+                    <input 
+                        type="text" 
+                        id="modalProjectName" 
+                        class="form-control"
+                        placeholder="Ex: Refonte du site web"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="modalProjectDescription">Description</label>
+                    <textarea 
+                        id="modalProjectDescription" 
+                        class="form-control"
+                        placeholder="Description du projet..."
+                        rows="4"
+                    ></textarea>
+                </div>
+            </form>
+        </div>
+        <!-- Métadonnées (visible en mode édition) -->
+        <div id="modalStats" class="metadata-section" style="display: none;">
+          <div class="metadata-grid">
+              <div class="metadata-item">
+                  <span class="metadata-label">Création le :</span>
+                  <span id="modalStatCreationDate"></span>
+              </div>
+              <div class="metadata-item">
+                  <span class="metadata-label">Dernière modification le :</span>
+                  <span id="modalStatLastEditDate"></span>
+              </div>
+              <div class="metadata-item">
+                  <span class="metadata-label">Dernier avancement le :</span>
+                  <span id="modalStatLastProgressDate"></span>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="modal-actions">
+                <button class="btn btn-danger modal-close-btn">
+                    Annuler
+                </button>
+                <button class="btn btn-primary" id="saveProjectBtn">
+                    Enregistrer
+                </button>
+            </div>
+        </div>  
+  </div>
+</div>
+
+  <script src="{{ url_for('static', filename='js/api-adapter.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/projects.js') }}"></script>
+  <script>
+    // Initialiser les composants pour cette page
+    initComponents('projects', '📂 Projets');
+  </script>
+</body>
+</html>

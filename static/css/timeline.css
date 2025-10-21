@@ -1,0 +1,387 @@
+/* ========================================
+   📅 TIMELINE STYLES
+======================================== */
+
+.timeline-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.custom-period {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.form-input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+/* Stats Cards */
+.timeline-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.stat-icon {
+    font-size: 2rem;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Timeline Container */
+.timeline-container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Timeline Groups (par période) */
+.timeline-group {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-group::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 60px;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.timeline-group-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.timeline-group-icon {
+    font-size: 1.5rem;
+}
+
+.timeline-group-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.timeline-group-count {
+    margin-left: auto;
+    padding: 0.3rem 0.8rem;
+    background: #e8eaf6;
+    color: #667eea;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Timeline Items */
+.timeline-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    padding-left: 50px;
+    position: relative;
+}
+
+/* Point sur la ligne */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 15px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 4px solid #667eea;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Couleur du point selon priorité */
+.timeline-item[data-priority="high"]::before {
+    border-color: #ef4444;
+}
+
+.timeline-item[data-priority="medium"]::before {
+    border-color: #f59e0b;
+}
+
+.timeline-item[data-priority="low"]::before {
+    border-color: #10b981;
+}
+
+/* Point pour tâches terminées */
+.timeline-item[data-status="done"]::before {
+    background: #10b981;
+    border-color: #10b981;
+}
+
+/* Point pour tâches en retard */
+.timeline-item.overdue::before {
+    background: #ef4444;
+    border-color: #ef4444;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.timeline-date {
+    flex-shrink: 0;
+    width: 80px;
+    padding-top: 0.5rem;
+}
+
+.timeline-date-day {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+    line-height: 1;
+}
+
+.timeline-date-month {
+    font-size: 0.85rem;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.timeline-task-card {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 1.2rem;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.timeline-task-card:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+}
+
+/* Couleurs selon priorité */
+.timeline-task-card[data-priority="high"] {
+    border-left-color: #ef4444;
+}
+
+.timeline-task-card[data-priority="medium"] {
+    border-left-color: #f59e0b;
+}
+
+.timeline-task-card[data-priority="low"] {
+    border-left-color: #10b981;
+}
+
+/* Tâche terminée */
+.timeline-task-card[data-status="done"] {
+    opacity: 0.7;
+    background: #f0fdf4;
+    border-left-color: #10b981;
+}
+
+.timeline-task-card[data-status="done"] .timeline-task-title {
+    text-decoration: line-through;
+    color: #10b981;
+}
+
+/* Tâche en retard */
+.timeline-task-card.overdue {
+    background: #fef2f2;
+    border-left-color: #ef4444;
+}
+
+.timeline-task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-task-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.timeline-task-badges {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.badge {
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-priority-high {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.badge-priority-medium {
+    background: #fef3c7;
+    color: #f59e0b;
+}
+
+.badge-priority-low {
+    background: #d1fae5;
+    color: #10b981;
+}
+
+.badge-status {
+    background: #e8eaf6;
+    color: #667eea;
+}
+
+.badge-status.done {
+    background: #d1fae5;
+    color: #10b981;
+}
+
+.badge-status.overdue {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.timeline-task-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.timeline-task-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.timeline-task-project {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.timeline-task-deadline {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.timeline-task-deadline.overdue {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+/* Empty State */
+.empty-message {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #999;
+}
+
+.empty-message p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .control-group {
+        width: 100%;
+    }
+    
+    .timeline-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-item {
+        padding-left: 40px;
+    }
+    
+    .timeline-group::before {
+        left: 15px;
+    }
+    
+    .timeline-item::before {
+        left: 6px;
+    }
+    
+    .timeline-date {
+        width: 60px;
+    }
+    
+    .timeline-task-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

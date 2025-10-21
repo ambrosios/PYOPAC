@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[OPAC] Paramètres</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <!-- Container pour la sidebar -->
+  <div id="sidebar-container"></div>
+
+  <main class="main-content">
+    <div id="header-container"></div>
+    <!-- <header class="page-header">
+      <h1>⚙️ Paramètres</h1>
+      <p>Configuration de l'application</p>
+    </header> -->
+
+    <div class="card">
+      <h3>📋 Informations</h3>
+      <p><strong>Version:</strong> 1.0.0</p>
+      <p><strong>Electron:</strong> <span id="electronVersion">-</span></p>
+      <p><strong>Chrome:</strong> <span id="chromeVersion">-</span></p>
+      <p><strong>Node:</strong> <span id="nodeVersion">-</span></p>
+    </div>
+
+    <div class="card">
+      <h3>🗑️ Actions</h3>
+      <button class="btn btn-danger" onclick="resetAppData()">
+        Réinitialiser la base de données
+      </button>
+    </div>
+  </main>
+
+  <script src="../js/common.js"></script>
+  <script>
+    // Afficher les versions
+    document.getElementById('electronVersion').textContent = process.versions.electron;
+    document.getElementById('chromeVersion').textContent = process.versions.chrome;
+    document.getElementById('nodeVersion').textContent = process.versions.node;
+  </script>
+  <script src="{{ url_for('static', filename='js/api-adapter.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+  <script>
+    // Initialiser les composants pour cette page
+    initComponents('settings', '⚙️ Paramètres');
+  </script>
+</body>
+</html>

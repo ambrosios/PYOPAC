@@ -1,0 +1,166 @@
+#projects-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+/* Grille des projets */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Carte projet */
+.project-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: #667eea;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.project-header h3 {
+    font-size: 1.125rem;
+    color: var(--dark);
+    flex: 1;
+    margin: 0;
+}
+
+.project-actions {
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.project-actions button {
+    padding: 6px;
+    border-radius: 6px;
+    border: solid #CCC 1px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.project-card:hover .project-actions {
+    opacity: 1;
+}
+
+.project-description {
+    color: var(--gray);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    height: 6rem;
+    min-height: 2rem;
+    max-height: 4rem;
+}
+
+.project-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+}
+
+.stat {
+    flex: 1;
+    text-align: center;
+}
+
+.project-stats .stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* Barre de progression */
+.progress-bar {
+    height: 6px;
+    background: #EEE;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.875rem;
+}
+
+.project-date {
+    color: var(--gray);
+    font-style: italic;
+    font-size: 0.7rem;
+    text-align: right;
+    display: block;
+}
+
+.metadata-section {
+    margin: 0 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.metadata-section h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    color: #475569;
+}
+
+.metadata-grid {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.metadata-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.metadata-item:last-child {
+    border-bottom: none;
+}
+
+.metadata-label {
+    font-weight: 600;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.metadata-item span:last-child {
+    color: #1e293b;
+    font-size: 0.9rem;
+}

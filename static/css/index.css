@@ -1,0 +1,49 @@
+/* === STATS === */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-card {
+    background: var(--card-bg);
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    /* display: flex; */
+    /* align-items: center; */
+    /* gap: 1.5rem; */
+    transition: transform 0.3s;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  .stat-icon {
+    font-size: 3rem;
+  }
+  
+  .stat-content h3 {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .kanban-container {
+    padding: 0 0;
+    margin: 0;
+    grid-template-columns: inherit;
+  }
+
+  .column-content:empty::after {
+    content: "Aucune tâche";
+}
