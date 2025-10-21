@@ -2,3 +2,4 @@ dist/
 app.build/
 app.dist/
 build/
+.DS_Store
